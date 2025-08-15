@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqg3jrbyrbdyt"]
+
+[ext_resource type="Texture2D" uid="uid://dtiankg0yvref" path="res://ballon.png" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://leesjmjlxn6x" path="res://more ballown animation's.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cm7btjtpjf4gt" path="res://backround.PNG" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cqja0gg7e8b1d" path="res://play button.png" id="3_h2yge"]
+[ext_resource type="FontFile" uid="uid://cj11px70nmqs8" path="res://PixelOperator8-Bold.ttf" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://d4l771bvdk05l" path="res://enter_game.gd" id="4_7mycd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+bg_color = Color(0.718414, 0.94206, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(0, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(33, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("1_ig7tw")
+region = Rect2(66, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("2_0xm2m")
+region = Rect2(0, 50, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("2_0xm2m")
+region = Rect2(33, 50, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("2_0xm2m")
+region = Rect2(66, 50, 33, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lquwl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xm2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Node2D" type="Node2D"]
+z_index = 10
+
+[node name="Label2" type="Label" parent="."]
+z_index = 5
+offset_left = -46.0
+offset_top = 26.0
+offset_right = 1.0
+offset_bottom = 48.3333
+scale = Vector2(2.20228, 1.92162)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Play"
+
+[node name="Label3" type="Label" parent="."]
+z_index = 5
+offset_left = -119.0
+offset_top = -77.0
+offset_right = 125.0
+offset_bottom = 57.0
+scale = Vector2(1, 1.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1bvp3")
+text = "Ballown      game"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -325.0
+offset_top = -176.0
+offset_right = -241.0
+offset_bottom = -93.0
+scale = Vector2(7.8, 4.76)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+
+[node name="Backround" type="Sprite2D" parent="."]
+position = Vector2(-9.5, 1.50001)
+scale = Vector2(3.5812, 2.41964)
+texture = ExtResource("2_7mycd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+position = Vector2(12, -50)
+sprite_frames = SubResource("SpriteFrames_lquwl")
+autoplay = "default"
+frame_progress = 0.653386
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.00001, 18)
+scale = Vector2(2.54, 2.18)
+texture = ExtResource("3_h2yge")
+script = ExtResource("4_7mycd")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+visibility_layer = 0
+offset_left = -25.1969
+offset_top = 5.50459
+offset_right = -17.1969
+offset_bottom = 13.5046
+scale = Vector2(5.7874, 2.3578)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = 16.0
+offset_right = 30.0
+offset_bottom = 39.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="Sprite2D/Button" to="Sprite2D" method="_on_button_button_up"]

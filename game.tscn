@@ -1,0 +1,314 @@
+[gd_scene load_steps=24 format=3 uid="uid://ds0d2u7wj3r5t"]
+
+[ext_resource type="Script" uid="uid://34jqxrfkttt0" path="res://changescene.gd" id="1_eow3j"]
+[ext_resource type="Texture2D" uid="uid://dtiankg0yvref" path="res://ballon.png" id="2_7jktm"]
+[ext_resource type="FontFile" uid="uid://cx21wla16eggo" path="res://ErraticCursiveItalic-gwDjp.ttf" id="2_vef74"]
+[ext_resource type="Texture2D" uid="uid://leesjmjlxn6x" path="res://more ballown animation's.png" id="3_ryrav"]
+[ext_resource type="Script" uid="uid://ctx03bimqfxyx" path="res://ballownexlode.gd" id="4_eow3j"]
+[ext_resource type="Texture2D" uid="uid://bxd5kxhrkju8y" path="res://icon.svg" id="5_j5wjh"]
+[ext_resource type="Script" uid="uid://d3se1suiemh6" path="res://duplicate_enemey.gd" id="5_vef74"]
+[ext_resource type="Script" uid="uid://c2sjtgxebeotr" path="res://enemey.gd" id="7_hve3p"]
+[ext_resource type="Script" uid="uid://0vdktf6fkkvf" path="res://score.gd" id="8_j5wjh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xm2m"]
+atlas = ExtResource("2_7jktm")
+region = Rect2(0, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("2_7jktm")
+region = Rect2(33, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("2_7jktm")
+region = Rect2(66, 0, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("3_ryrav")
+region = Rect2(0, 50, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("3_ryrav")
+region = Rect2(33, 50, 33, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("3_ryrav")
+region = Rect2(66, 50, 33, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vef74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xm2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2yge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eow3j"]
+radius = 12.0104
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j5wjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
+size = Vector2(136.348, 121.904)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hve3p"]
+size = Vector2(585.25, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfdv2"]
+size = Vector2(48.0331, 1614.28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iotsf"]
+size = Vector2(40, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc2xo"]
+size = Vector2(690, 57)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_eow3j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_right = -94.0
+offset_bottom = 46.0
+grow_horizontal = 2
+
+[node name="score2" type="Label" parent="CanvasLayer/HBoxContainer"]
+z_index = 9
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vef74")
+theme_override_font_sizes/font_size = 50
+text = "            0"
+max_lines_visible = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+top_level = true
+z_index = 10
+position = Vector2(153, 53)
+sprite_frames = SubResource("SpriteFrames_vef74")
+autoplay = "default"
+frame = 4
+frame_progress = 0.574117
+script = ExtResource("4_eow3j")
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+light_mask = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(1, -7)
+shape = SubResource("CircleShape2D_eow3j")
+
+[node name="Button" type="Button" parent="AnimatedSprite2D"]
+visibility_layer = 0
+anchors_preset = -1
+anchor_left = 0.0606061
+anchor_right = 0.0606061
+offset_left = -12.0
+offset_top = -23.0
+offset_right = 10.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="AnimatedSprite2D"]
+visibility_layer = 0
+position = Vector2(-9, -23)
+scale = Vector2(20, 46)
+texture_normal = SubResource("CanvasTexture_j5wjh")
+
+[node name="Cerful" type="Node" parent="."]
+script = ExtResource("5_vef74")
+
+[node name="enemey1" type="Sprite2D" parent="Cerful"]
+position = Vector2(-340, 93)
+scale = Vector2(0.359375, 0.164063)
+texture = ExtResource("5_j5wjh")
+script = ExtResource("7_hve3p")
+
+[node name="touch" type="Area2D" parent="Cerful/enemey1"]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cerful/enemey1/touch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(4.17383, 0)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="enemey2" type="Sprite2D" parent="Cerful"]
+position = Vector2(-340, 58)
+scale = Vector2(0.359375, 0.164063)
+texture = ExtResource("5_j5wjh")
+script = ExtResource("7_hve3p")
+
+[node name="touch" type="Area2D" parent="Cerful/enemey2"]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cerful/enemey2/touch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(4.17383, 0)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="enemey3" type="Sprite2D" parent="Cerful"]
+position = Vector2(-338, 131)
+scale = Vector2(0.359375, 0.164063)
+texture = ExtResource("5_j5wjh")
+script = ExtResource("7_hve3p")
+
+[node name="touch" type="Area2D" parent="Cerful/enemey3"]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cerful/enemey3/touch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(4.17383, 0)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="enemey4" type="Sprite2D" parent="Cerful"]
+position = Vector2(-340, -17.5)
+scale = Vector2(0.359375, 0.164063)
+texture = ExtResource("5_j5wjh")
+script = ExtResource("7_hve3p")
+
+[node name="touch" type="Area2D" parent="Cerful/enemey4"]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cerful/enemey4/touch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(4.17383, 0)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="enemey5" type="Sprite2D" parent="Cerful"]
+position = Vector2(-340, -52.5)
+scale = Vector2(0.359375, 0.164063)
+texture = ExtResource("5_j5wjh")
+script = ExtResource("7_hve3p")
+
+[node name="touch" type="Area2D" parent="Cerful/enemey5"]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cerful/enemey5/touch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(4.17383, 0)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="enemey6" type="Sprite2D" parent="Cerful"]
+position = Vector2(-338, 20.5)
+scale = Vector2(0.359375, 0.164063)
+texture = ExtResource("5_j5wjh")
+script = ExtResource("7_hve3p")
+
+[node name="touch" type="Area2D" parent="Cerful/enemey6"]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cerful/enemey6/touch"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(4.17383, 0)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(139, 45)
+offset = Vector2(0, 1)
+zoom = Vector2(2, 2)
+
+[node name="score" type="Area2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(493, 153)
+scale = Vector2(0.359375, 8.36406)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("8_j5wjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="score"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(648.348, -1.31515)
+shape = SubResource("RectangleShape2D_eow3j")
+
+[node name="disable leaving4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="disable leaving4"]
+position = Vector2(136.375, 236)
+shape = SubResource("RectangleShape2D_hve3p")
+
+[node name="disable leaving3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="disable leaving3"]
+position = Vector2(-180, 71)
+scale = Vector2(1.24913, 0.23452)
+shape = SubResource("RectangleShape2D_mfdv2")
+
+[node name="disable leaving2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="disable leaving2"]
+position = Vector2(449, 72)
+shape = SubResource("RectangleShape2D_iotsf")
+
+[node name="disable leaving" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="disable leaving"]
+position = Vector2(132, -145)
+shape = SubResource("RectangleShape2D_lc2xo")
+
+[connection signal="lost" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="Cerful/enemey1" method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="Cerful/enemey2" method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="Cerful/enemey3" method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="Cerful/enemey4" method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="Cerful/enemey5" method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="Cerful/enemey6" method="_on_animated_sprite_2d_lost"]
+[connection signal="lost" from="AnimatedSprite2D" to="score" method="_on_animated_sprite_2d_lost"]
+[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="AnimatedSprite2D" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="AnimatedSprite2D/Button" to="AnimatedSprite2D" method="_on_button_button_down"]
+[connection signal="button_up" from="AnimatedSprite2D/Button" to="AnimatedSprite2D" method="_on_button_button_up"]
+[connection signal="pressed" from="AnimatedSprite2D/TouchScreenButton" to="AnimatedSprite2D" method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="AnimatedSprite2D/TouchScreenButton" to="AnimatedSprite2D" method="_on_touch_screen_button_released"]
+[connection signal="area_entered" from="score" to="score" method="_on_area_entered"]
+[connection signal="area_entered" from="disable leaving4" to="disable leaving4" method="_on_area_entered"]
